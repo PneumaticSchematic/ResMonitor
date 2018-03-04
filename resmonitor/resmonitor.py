@@ -27,8 +27,9 @@ class Application(tk.Frame):
         root.after(self.CPU_USAGE_UPDATE_TIME_MS, app.update_cpu_usage)
 
 
-root = tk.Tk()
-app = Application(master=root)
-app.update_cpu_usage()
+if __name__ == '__main__':
+    root = tk.Tk()
+    app = Application(master=root)
+    app.update_cpu_usage()
 
-app.mainloop()
+    app.mainloop()
