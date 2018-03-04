@@ -9,19 +9,19 @@ class Application(tk.Frame):
 
         self.quit = tk.Button(self, text="QUIT", fg="red",
                               command=root.destroy)
-        self.hi_there = tk.Label(self)
+        self.cpu_percent = tk.Label(self)
 
         self.pack()
         self.setup_widgets()
 
     def setup_widgets(self):
-        self.hi_there["text"] = psutil.cpu_percent(percpu=True)
-        self.hi_there.pack(side="top")
+        self.cpu_percent["text"] = psutil.cpu_percent(percpu=True)
+        self.cpu_percent.pack(side="top")
 
         self.quit.pack(side="bottom")
 
     def update_cpu_usage(self):
-        self.hi_there["text"] = psutil.cpu_percent(percpu=True)
+        self.cpu_percent["text"] = psutil.cpu_percent(percpu=True)
         root.after(1000, app.update_cpu_usage)
 
 
