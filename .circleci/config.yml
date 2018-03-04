@@ -1,0 +1,51 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: run tests
+          # Our tests require a display to exist to run
+          # Xvfb provides a display that exists solely in virtual memory so it still works
+          # inside of docker
+          command: |
+            . venv/bin/activate
+            mkdir -p test-reports/nose
+            Xvfb :1 &
+            DISPLAY=:1 nosetests --with-xunit --xunit-file=${CIRCLE_TEST_REPORTS-test-reports}/nose/test-results.xml
+
+      - store_test_results:
+          path: test-reports
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
