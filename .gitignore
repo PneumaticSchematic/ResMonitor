@@ -104,5 +104,9 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# pycharm
+# other stuff
+lib64
+pip-selfcheck.json
+pyvenv.cfg
 .idea/
+bin/
