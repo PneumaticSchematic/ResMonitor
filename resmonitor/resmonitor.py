@@ -6,7 +6,7 @@ import psutil
 class Application(tk.Frame):
     CPU_USAGE_UPDATE_TIME_MS = 1000
 
-    def __init__(self, master=None):
+    def __init__(self, master: tk.Tk = None):
         super().__init__(master)
 
         self.quit = tk.Button(self, text="QUIT", fg="red",
