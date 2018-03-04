@@ -10,7 +10,7 @@ class Application(tk.Frame):
         super().__init__(master)
 
         self.quit = tk.Button(self, text="QUIT", fg="red",
-                              command=root.destroy)
+                              command=master.destroy)
         self.cpu_percent = tk.Label(self)
 
         self.pack()
@@ -24,7 +24,7 @@ class Application(tk.Frame):
 
     def update_cpu_usage(self):
         self.cpu_percent["text"] = psutil.cpu_percent(percpu=True)
-        root.after(self.CPU_USAGE_UPDATE_TIME_MS, app.update_cpu_usage)
+        self.master.after(self.CPU_USAGE_UPDATE_TIME_MS, self.update_cpu_usage)
 
 
 if __name__ == '__main__':
