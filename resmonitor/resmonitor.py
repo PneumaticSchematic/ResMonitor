@@ -4,6 +4,8 @@ import psutil
 
 
 class Application(tk.Frame):
+    CPU_USAGE_UPDATE_TIME_MS = 1000
+
     def __init__(self, master=None):
         super().__init__(master)
 
@@ -22,7 +24,7 @@ class Application(tk.Frame):
 
     def update_cpu_usage(self):
         self.cpu_percent["text"] = psutil.cpu_percent(percpu=True)
-        root.after(1000, app.update_cpu_usage)
+        root.after(self.CPU_USAGE_UPDATE_TIME_MS, app.update_cpu_usage)
 
 
 root = tk.Tk()
