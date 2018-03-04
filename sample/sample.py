@@ -1,5 +1,7 @@
 import tkinter as tk
+
 import psutil
+
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -19,6 +21,7 @@ class Application(tk.Frame):
     def update_cpu_usage(self):
         self.hi_there["text"] = psutil.cpu_percent(percpu=True)
         root.after(1000, app.update_cpu_usage)
+
 
 root = tk.Tk()
 app = Application(master=root)
