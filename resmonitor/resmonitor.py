@@ -20,7 +20,7 @@ class Application(tk.Frame):
         self.cpu_list = []
         for i in range(self.num_cpus):
             new_cpu = ttk.Progressbar(self, orient=tk.HORIZONTAL, length=100,
-                                      mode='determinate')
+                                      mode='determinate', style="blue.Horizontal.TProgressbar")
             self.cpu_list.append(new_cpu)
 
         self.pack()
@@ -51,6 +51,10 @@ if __name__ == '__main__':
         master=root,
         proc_info=psutil
     )
+
+    s = ttk.Style()
+    s.theme_use('clam')
+    s.configure("blue.Horizontal.TProgressbar", foreground='blue', background='blue')
 
     app.update_cpu_usage()
 
