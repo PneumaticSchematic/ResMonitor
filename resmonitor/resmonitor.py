@@ -1,6 +1,5 @@
 import tkinter as tk
-from tkinter import HORIZONTAL
-from tkinter.ttk import Progressbar
+from tkinter import ttk
 
 import psutil
 
@@ -20,8 +19,8 @@ class Application(tk.Frame):
 
         self.cpu_list = []
         for i in range(self.num_cpus):
-            new_cpu = Progressbar(self, orient=HORIZONTAL, length=100,
-                                  mode='determinate')
+            new_cpu = ttk.Progressbar(self, orient=tk.HORIZONTAL, length=100,
+                                      mode='determinate')
             self.cpu_list.append(new_cpu)
 
         self.pack()
