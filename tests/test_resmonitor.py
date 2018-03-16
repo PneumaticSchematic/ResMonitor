@@ -32,6 +32,7 @@ class TestMainPage(TkinterTest):
         app.update_cpu_usage()
         for i in range(FakePsUtil.cpu_count()):
             self.assertEqual('1', app.cpu_labels[i]['text'])
+            self.assertEqual(1, app.cpu_bars[i]['value'])
 
 
 if __name__ == '__main__':
