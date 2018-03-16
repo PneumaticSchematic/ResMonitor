@@ -43,7 +43,7 @@ class Application(tk.Frame):
             self.cpu_names[i].grid(row=i * 2 + 1, column=0)
             self.cpu_names[i]['text'] = "CPU%d" % i
 
-        self.quit.grid(row=9, column=0)
+        self.quit.grid(row=9, column=1)
 
     def update_cpu_usage(self):
         cpu_percent = self.proc_info.cpu_percent(percpu=True)
