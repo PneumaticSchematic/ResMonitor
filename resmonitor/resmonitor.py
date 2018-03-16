@@ -15,7 +15,6 @@ class Application(tk.Frame):
 
         self.quit = tk.Button(self, text="QUIT", fg="red",
                               command=master.destroy)
-        self.cpu_percent = tk.Label(self)
 
         self.cpu_labels = []
         self.cpu_bars = []
@@ -32,7 +31,6 @@ class Application(tk.Frame):
 
     def setup_widgets(self):
         cpu_percent = self.proc_info.cpu_percent(percpu=True)
-        self.cpu_percent.pack(side="top")
 
         for i in range(self.num_cpus):
             self.cpu_bars[i].pack()
@@ -43,11 +41,10 @@ class Application(tk.Frame):
 
     def update_cpu_usage(self):
         cpu_percent = self.proc_info.cpu_percent(percpu=True)
-        self.cpu_percent["text"] = cpu_percent
 
         for i in range(self.num_cpus):
             self.cpu_bars[i]['value'] = cpu_percent[i]
-            self.cpu_labels[i]["text"] = cpu_percent[i]
+            self.cpu_labels[i]['text'] = str(cpu_percent[i])
 
         self.master.after(self.CPU_USAGE_UPDATE_TIME_MS, self.update_cpu_usage)
 

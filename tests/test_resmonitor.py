@@ -30,7 +30,8 @@ class TestMainPage(TkinterTest):
     def test_cpu_percent(self):
         app = resmonitor.Application(self.master, FakePsUtil)
         app.update_cpu_usage()
-        self.assertEqual('1 1 1', app.cpu_percent['text'])
+        for i in range(FakePsUtil.cpu_count()):
+            self.assertEqual('1', app.cpu_labels[i]['text'])
 
 
 if __name__ == '__main__':
