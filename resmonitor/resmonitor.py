@@ -33,11 +33,11 @@ class Application(tk.Frame):
         cpu_percent = self.proc_info.cpu_percent(percpu=True)
 
         for i in range(self.num_cpus):
-            self.cpu_bars[i].pack()
-            self.cpu_labels[i].pack()
+            self.cpu_bars[i].grid(row=i * 2, columnspan=4)
+            self.cpu_labels[i].grid(row=i * 2 + 1, column=2)
             self.cpu_labels[i]["text"] = cpu_percent[i]
 
-        self.quit.pack(side="bottom")
+        self.quit.grid(row=9, column=0)
 
     def update_cpu_usage(self):
         cpu_percent = self.proc_info.cpu_percent(percpu=True)
