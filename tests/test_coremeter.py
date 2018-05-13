@@ -1,7 +1,7 @@
 import tkinter as tk
 import unittest
 
-from resmonitor import resmonitor
+from coremeter import coremeter
 
 
 class FakePsUtil:
@@ -28,7 +28,7 @@ class TkinterTest(unittest.TestCase):
 
 class TestMainPage(TkinterTest):
     def test_cpu_percent(self):
-        app = resmonitor.Application(self.master, FakePsUtil)
+        app = coremeter.Application(self.master, FakePsUtil)
         app.update_cpu_usage()
         for i in range(FakePsUtil.cpu_count()):
             self.assertEqual('1', app.cpu_labels[i]['text'])

@@ -62,8 +62,6 @@ if __name__ == '__main__':
         proc_info=psutil
     )
 
-    root.attributes('-type', 'dialog')
-
     s = ttk.Style()
     s.theme_use('clam')
     s.configure("blue.Horizontal.TProgressbar", foreground='blue', background='blue')

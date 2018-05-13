@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-        name = 'res-monitor',
-        packages = ['res-monitor'],
+        name = 'coremeter',
+        packages = ['coremeter'],
         version = '1.0.0',
         description = 'A resource monitor for Unix',
         author = 'Stephen Johnson',
